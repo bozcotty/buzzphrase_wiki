@@ -8,14 +8,20 @@
     <div class="col-md-4">
 
         <button type="button" class="btn btn-default"><%= link_to "Back to Index", topics_path %></button>
-        <% if current_user.role == 'member' %>
-          <button type="button" class="btn btn-default"><%= link_to "Edit Topic", edit_topic_path %></button>
+        <% if current_user %>
+        <button type="button" class="btn btn-default"><%= link_to "Edit Topic", edit_topic_path %></button>
         <% end %>
 
 
       <br><br>
       <h4>List of Contributors:</h4>
-      <%= render @topic.users %>
+        <ul>
+          <% @topic.users.each do |user| %>
+          <li>
+            <%= link_to user.name, user_path %>
+          </li>
+          <% end %>
+        </ul>
 
     </div>
   </div>

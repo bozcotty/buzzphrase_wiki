@@ -9,9 +9,10 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(params[:topic])
+    @topic = current_user.topics.new(topic_params)
     authorize! :create, @topic, message: "You need to be signed in to do that."
     if @topic.save
+      @topic.users << current_user
       flash[:notice] = "Topic was saved successfully."
       redirect_to @topic
     else
@@ -22,23 +23,28 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    authorize! :read, @topic, message: "You need to be signedn in to do that."
-    # @posts = @topic.posts.includes(:user).includes(:comments).paginate(page: params[:page], per_page: 10)
+    authorize! :read, @topic, message: "You need to be signed in to do that."
   end
 
   def edit
     @topic = Topic.find(params[:id])
     authorize! :edit, @topic, message: "You need to be signed in to do that."
-
   end
 
   def update
     @topic = Topic.find(params[:id])
     authorize! :update, @topic, message: "You need to be signed in to do that."
-    if @topic.update(params[:topic])
+    if @topic.update(topic_params)
+      @topic.users << current_user
       redirect_to @topic, notice: 'Topic was successfully updated.'
     else
       render :edit
     end
+  end
+
+  private
+
+  def topic_params
+    params.require(:topic).permit(:title, :body)
   end
 end
