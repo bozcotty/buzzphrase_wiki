@@ -4,7 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :author_page
+  # has_one :author_page
   has_and_belongs_to_many :topics
+
+  ROLES = %w[member admin]
+
+  def role?(base_role)
+    self.role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(self.role)
+  end
 
 end

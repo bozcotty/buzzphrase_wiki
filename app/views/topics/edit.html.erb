@@ -1,0 +1,13 @@
+<h1> Contribute to Topic: <%= @topic.title %></h1>
+
+<div class="row">
+    <div class="col-md-5 col-md-offset-1">
+        <%= simple_form_for @topic, :html => {:multipart =>true} do |f| %>
+
+        <%= f.input :body, input_html: { :rows => 15 }, label: "Apply your edits to the body of this topic" %>
+
+        <%= f.button :submit, "Update Topic" %>
+        <br><br>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<h2>Topic: <%= @topic.title %></h2>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <p><%= @topic.body %></p>
+    </div>
+    <div class="col-md-4">
+
+        <button type="button" class="btn btn-default"><%= link_to "Back to Index", topics_path %></button>
+        <% if current_user.role == 'member' %>
+          <button type="button" class="btn btn-default"><%= link_to "Edit Topic", edit_topic_path %></button>
+        <% end %>
+
+
+      <br><br>
+      <h4>List of Contributors:</h4>
+      <%= render @topic.users %>
+
+    </div>
+  </div>
+</div>
