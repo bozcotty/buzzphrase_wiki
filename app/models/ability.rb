@@ -14,7 +14,7 @@ class Ability
 
     if user.role? :member
         can :read, :all
-        can [:create, :edit, :update], Topic
+        can [:create, :edit, :update, :new], Topic
     end
 
     if user.role? :admin
