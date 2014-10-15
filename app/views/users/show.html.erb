@@ -4,7 +4,7 @@
 <ul>
   <% @user.topics.each do |topic| %>
     <li>
-      <%= link_to topic.title, topic_path %>
+      <%= link_to topic.title, topic_path(@user.topic) %>
     </li>
   <% end %>
 </ul>

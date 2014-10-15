@@ -19,3 +19,4 @@ class User < ActiveRecord::Base
     self.role ||= 'member'
   end
 end
+
