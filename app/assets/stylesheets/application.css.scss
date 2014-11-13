@@ -1,0 +1,22 @@
+ /*
+ *= require_tree .
+ *= require_self
+ */
+
+ /* scss variable */
+$grid-float-breakpoint: 1000px;
+
+ @import 'bootstrap';
+
+.user-info {
+  margin-top: 9px;
+}
+
+.nav {
+  margin-top: 5px;
+}
+
+.error {
+ color: red;
+}
+

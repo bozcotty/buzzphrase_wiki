@@ -1,0 +1,16 @@
+<h2>Index of Authors</h2>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <% @users.each do |user| %>
+        <p class="media-heading">
+          <%= link_to user.email, user %>
+        </p>
+      <% end %>
+    </div>
+  </dvi>
+</div>
+
+
+

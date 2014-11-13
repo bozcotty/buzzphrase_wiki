@@ -1,0 +1,29 @@
+<h2>Index of Topics</h2>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <% @topics.each do |topic| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to topic.title.capitalize, topic %>.
+            </h4>
+            <small>
+              <%= topic.body %>
+            </small>
+
+          </div>
+        </div><br>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <% if @user = current_user %>
+        <button type="button" class="btn btn-default"><%= link_to "New Topic", new_topic_path %></button>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
