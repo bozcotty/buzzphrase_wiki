@@ -10,7 +10,6 @@ Coveralls.wear!('rails')
 # to the test group in the Gemfile and uncomment the following:
 # require "minitest/rails/capybara"
 
-
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 

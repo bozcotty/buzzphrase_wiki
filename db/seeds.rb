@@ -1,6 +1,6 @@
 require 'faker'
 
-#create 5 topics
+# create 5 topics
 topics = []
 5.times do
   topics << Topic.create(
@@ -13,7 +13,6 @@ u = User.new(email: 'shalemont@gmail.com', password: 'password', password_confir
 # u.skip_confirmation!
 u.save
 # u.update_attribute(:role, 'member')
-
 
 8.times do
   password = Faker::Lorem.characters(8)

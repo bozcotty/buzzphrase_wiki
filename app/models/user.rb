@@ -9,14 +9,13 @@ class User < ActiveRecord::Base
   # has_one :author_page
   has_and_belongs_to_many :topics
 
-  ROLES = %w[member admin]
+  ROLES = %w(member admin)
 
   def role?(base_role)
-    self.role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(self.role)
+    role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
   def set_member
     self.role ||= 'member'
   end
 end
-
