@@ -13,12 +13,12 @@ class Ability
     #
 
     if user.role? :member
-        can :read, :all
-        can [:create, :edit, :update, :new], Topic
+      can :read, :all
+      can [:create, :edit, :update, :new], Topic
     end
 
     if user.role? :admin
-        can :manage, :all
+      can :manage, :all
     end
 
     can :read, :all
